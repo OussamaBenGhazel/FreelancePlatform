@@ -1,20 +1,17 @@
 const mongoose = require("mongoose");
 
 const User = mongoose.model("User",{
-    name : {
+    NAME : {
         type : String,
     },
-    lastName : {
+    LASTNAME : {
         type : String,
     },
-    age : {
+    AGE : {
         type : Number,
     },
-    avatar : {
+    GENDER : {
         type: String
-    },
-    rating : {
-        type : Number
     }
 });
 
