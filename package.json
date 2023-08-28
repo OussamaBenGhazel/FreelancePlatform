@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --watch index.js"
   },
-  "author": "ayoub",
+  "author": "oussema",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",

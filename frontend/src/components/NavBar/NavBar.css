@@ -1,0 +1,28 @@
+.nav-container {
+    padding: 0 10px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(76, 79, 243);
+    color: #ffff;
+}
+
+.logo {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+
+.menu, .logins{
+    margin-top: 12px;
+    padding-right: 30px;
+}
+
+.menu span, .logins{
+    font-size: 20px;
+    margin-left: 25px;
+}
+.nav-item{
+color: #ffff !important;
+}

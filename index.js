@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user");
 const loginRouter = require("./routes/login");
+const feedRouter = require("./routes/feed");
 
 require("dotenv").config();
 
@@ -21,6 +22,7 @@ connection.once("open", () => {
 
 app.use('/user',userRouter);
 app.use('/login',loginRouter);
+app.use('/feed', feedRouter);
 
 app.listen(4000, () => {
   console.log("Server works on port 4000 ...");
