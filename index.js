@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const userRouter = require("./routes/user");
 const loginRouter = require("./routes/login");
 const feedRouter = require("./routes/feed");
+const contactRouter = require("./routes/contact");
 
 require("dotenv").config();
 
@@ -23,7 +24,8 @@ connection.once("open", () => {
 app.use('/user',userRouter);
 app.use('/login',loginRouter);
 app.use('/feed', feedRouter);
+app.use('/contact',contactRouter);
 
 app.listen(4000, () => {
-  console.log("Server works on port 4000 ...");
+  console.log("Server works on port 4000 ...") ;
 });

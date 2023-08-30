@@ -1,0 +1,10 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(../../assets/634e7aa49f5b02031ad9efce_Working\ as\ a\ Freelancer.jpg);
+    background-size: cover;
+
+}

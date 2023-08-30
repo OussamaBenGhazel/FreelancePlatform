@@ -1,0 +1,12 @@
+.main-con h1{
+    text-align: center;
+    margin: 50px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+}
+.content p {
+    width: 50%;
+}

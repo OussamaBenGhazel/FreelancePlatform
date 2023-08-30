@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const Login = mongoose.model("Login",{
-    login : {
+    Username : {
         type : String,
     },
-    password : {
+    Password : {
         type : String,
     }
 });

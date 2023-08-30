@@ -4,12 +4,16 @@ const Feed = mongoose.model("Feed",{
     title : {
         type : String,
     },
-    imgurl : {
+    feedOwner : {
         type : String,
     },
     description : {
         type : String,
-    }
+    },
+    message : {
+        type : String,
+    },
+
 });
 
 module.exports = Feed;

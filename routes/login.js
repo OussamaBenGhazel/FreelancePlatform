@@ -16,36 +16,46 @@ const hashage = async (pwd) => {
       }
 
       router.post("/add", async (req, res) => {
-      try {
-        let data = req.body;
-        let pwd = await hashage(data.password);
-        let login = new Login({login : data.login , password : pwd});
-        let result = await login.save(); // insertOne(user) , insertMany([{},{},{}])
-        res.send(result);
-      } catch (error) {
-        console.log(error);
-        res.send("403");
-      }
+        try{
+          console.log(req.body);
+            const salt = await bcrypt.genSalt(10);
+            const hashedPass = await bcrypt.hash(req.body.password, salt)
+            const newUser = new Login({
+                Username: req.body.Username,
+                Password: hashedPass
+            })
+            const user = await newUser.save()
+            res.status(200).json(user)
+        } catch (err) {
+            res.status(500).json(err)
+        }
     });
     
+     
+    
  
-    router.get("/:email/:password", async (req, res) => {
-      try {
-        let email = req.params.email;
-        let pwd = req.params.password;
-        // 
-        //  TRAITEMENT LOGIN
-        let cnx = await Login.findOne({ login: email });
-        if (!cnx) {
-          res.send("failed");
-        } else {
-          const result = await dehashage(pwd,cnx.password);
-           console.log("RESULTAS :",result)
-          res.send(`${result}`)
-        }
-      } catch (error) {
-        res.send(error);
+    router.post("/signIn", async (req, res) => {
+      try{
+        console.log(req.body);
+          const user = await Login.findOne({ Username: req.body.username });
+          console.log(user);
+            if(!user)
+          {
+              return res.status(400).json("Wrong credentials")
+          }
+  
+          const validated = await bcrypt.compare(req.body.password, user.Password);
+          if(!validated)
+          {
+              return res.status(400).json("Wrong credentials");
+          }
+          const { password, ...others } = user._doc;
+  
+          res.status(200).json(others);
+  
+      } catch(err){
+          res.status(500).json(err);
       }
-    });
+  });
 
     module.exports = router;
